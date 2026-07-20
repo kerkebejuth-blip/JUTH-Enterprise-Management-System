@@ -1,0 +1,94 @@
+:root {
+
+  /* ========= BRAND ========= */
+
+  --color-primary-50:#eef6ff;
+  --color-primary-100:#d9ebff;
+  --color-primary-200:#b8d8ff;
+  --color-primary-300:#8cc0ff;
+  --color-primary-400:#5ba2ff;
+  --color-primary-500:#2b7fff;
+  --color-primary-600:#1565d8;
+  --color-primary-700:#124ea8;
+  --color-primary-800:#103f85;
+  --color-primary-900:#0e356d;
+
+  /* ========= SUCCESS ========= */
+
+  --color-success:#16a34a;
+
+  /* ========= WARNING ========= */
+
+  --color-warning:#f59e0b;
+
+  /* ========= DANGER ========= */
+
+  --color-danger:#dc2626;
+
+  /* ========= INFO ========= */
+
+  --color-info:#0891b2;
+
+  /* ========= NEUTRAL ========= */
+
+  --gray-50:#f8fafc;
+  --gray-100:#f1f5f9;
+  --gray-200:#e2e8f0;
+  --gray-300:#cbd5e1;
+  --gray-400:#94a3b8;
+  --gray-500:#64748b;
+  --gray-600:#475569;
+  --gray-700:#334155;
+  --gray-800:#1e293b;
+  --gray-900:#0f172a;
+
+  /* ========= SURFACES ========= */
+
+  --surface-page:#f4f7fb;
+  --surface-card:#ffffff;
+
+  /* ========= TEXT ========= */
+
+  --text-primary:#0f172a;
+  --text-secondary:#475569;
+  --text-muted:#64748b;
+
+  /* ========= BORDER ========= */
+
+  --border:#e5e7eb;
+
+  /* ========= RADIUS ========= */
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --radius-xl:20px;
+  --radius-pill:999px;
+
+  /* ========= SHADOW ========= */
+
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+
+  --shadow-md:
+      0 4px 10px rgba(0,0,0,.08);
+
+  --shadow-lg:
+      0 12px 30px rgba(0,0,0,.12);
+
+  /* ========= SPACING ========= */
+
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --space-7:40px;
+  --space-8:48px;
+  --space-9:64px;
+
+  /* ========= SIDEBAR ========= */
+
+  --sidebar-width:280px;
+
+}
