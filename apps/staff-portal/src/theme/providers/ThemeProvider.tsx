@@ -26,30 +26,18 @@ function getSystemTheme(): "light" | "dark" {
     : "light";
 }
 
-export function ThemeProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<ThemeMode>(() => {
-    return (
-      (localStorage.getItem(STORAGE_KEY) as ThemeMode) ?? "system"
-    );
+    return (localStorage.getItem(STORAGE_KEY) as ThemeMode) ?? "system";
   });
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, mode);
   }, [mode]);
 
-  const activeTheme =
-    mode === "system"
-      ? getSystemTheme()
-      : mode;
+  const activeTheme = mode === "system" ? getSystemTheme() : mode;
 
-  const theme =
-    activeTheme === "dark"
-      ? darkTheme
-      : lightTheme;
+  const theme = activeTheme === "dark" ? darkTheme : lightTheme;
 
   useEffect(() => {
     document.documentElement.dataset.theme = activeTheme;
@@ -61,13 +49,11 @@ export function ThemeProvider({
       setMode,
       theme,
     }),
-    [mode, theme]
+    [mode, theme],
   );
 
   return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 
@@ -75,9 +61,7 @@ export function useThemeContext() {
   const context = useContext(ThemeContext);
 
   if (!context) {
-    throw new Error(
-      "useThemeContext must be used inside ThemeProvider."
-    );
+    throw new Error("useThemeContext must be used inside ThemeProvider.");
   }
 
   return context;

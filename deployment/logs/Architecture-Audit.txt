@@ -1,0 +1,353 @@
+JUTH ENTERPRISE ARCHITECTURE AUDIT
+Generated: 07/21/2026 07:02:05
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\api
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\API
+    encounter.api.ts
+    http.ts
+    patient.api.ts
+    
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\app
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\APP
+ª   App.tsx
+ª   
++---hooks
++---layouts
+ª       Breadcrumbs.tsx
+ª       Content.tsx
+ª       Footer.tsx
+ª       MainLayout.tsx
+ª       Sidebar.tsx
+ª       Topbar.tsx
+ª       
++---providers
++---router
+ª       navigation.ts
+ª       ProtectedRoute.tsx
+ª       router.tsx
+ª       
++---store
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\assets
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\ASSETS
+ª   hero.png
+ª   react.svg
+ª   vite.svg
+ª   
++---fonts
++---icons
++---images
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\components
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\COMPONENTS
++---charts
++---common
+ª       Breadcrumb.tsx
+ª       Loading.tsx
+ª       PageHeader.tsx
+ª       
++---data-table
++---feedback
++---forms
++---layout
+ª       MainContent.tsx
+ª       Sidebar.tsx
+ª       Topbar.tsx
+ª       
++---navigation
+ª       NavGroup.tsx
+ª       NavItem.tsx
+ª       
++---tables
++---ui
+    ª   Badge.tsx
+    ª   Card.tsx
+    ª   index.ts
+    ª   Section.tsx
+    ª   Select.tsx
+    ª   Stat.tsx
+    ª   Toolbar.tsx
+    ª   
+    +---Alert
+    +---Avatar
+    +---Badge
+    +---Breadcrumb
+    +---Button
+    ª       button.styles.ts
+    ª       Button.tsx
+    ª       button.types.ts
+    ª       index.ts
+    ª       
+    +---Card
+    +---Checkbox
+    +---Drawer
+    +---EmptyState
+    +---Input
+    +---Modal
+    +---Pagination
+    +---Radio
+    +---SearchBox
+    +---Select
+    +---Spinner
+    +---StatCard
+    +---Switch
+    +---Table
+    +---Tabs
+    +---Textarea
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\config
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\CONFIG
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\features
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\FEATURES
++---administration
++---appointments
++---auth
++---billing
++---clinics
++---dashboard
+ª       DashboardPage.tsx
+ª       
++---hr
++---inventory
++---laboratory
++---patients
++---pharmacy
++---radiology
++---reports
++---settings
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\hooks
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\HOOKS
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\layouts
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\LAYOUTS
+    MainLayout.tsx
+    
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\lib
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\LIB
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\modules
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\MODULES
++---administration
++---clinical
++---operations
++---patient-workspace
+    +---components
+    ª   +---ClinicalIntelligence
+    ª   ª       index.tsx
+    ª   ª       
+    ª   +---ClinicalJourney
+    ª   ª       index.tsx
+    ª   ª       
+    ª   +---PatientBanner
+    ª   ª       index.tsx
+    ª   ª       
+    ª   +---PatientContextBar
+    ª   ª       index.tsx
+    ª   ª       
+    ª   +---QuickActions
+    ª   ª       index.tsx
+    ª   ª       
+    ª   +---TimelinePanel
+    ª   ª       index.tsx
+    ª   ª       
+    ª   +---WorkspaceHost
+    ª           index.tsx
+    ª           
+    +---hooks
+    +---layouts
+    ª       PatientWorkspaceLayout.tsx
+    ª       
+    +---services
+    +---store
+    +---types
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\pages
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\PAGES
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\providers
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\PROVIDERS
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\router
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\ROUTER
+    index.tsx
+    routes.tsx
+    
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\services
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\SERVICES
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\shared
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\SHARED
++---constants
++---hooks
++---services
++---types
++---ui
++---utils
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\store
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\STORE
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\stories
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\STORIES
+ª   button.css
+ª   Button.stories.ts
+ª   Button.tsx
+ª   Configure.mdx
+ª   header.css
+ª   Header.stories.ts
+ª   Header.tsx
+ª   page.css
+ª   Page.stories.ts
+ª   Page.tsx
+ª   
++---assets
+        accessibility.png
+        accessibility.svg
+        addon-library.png
+        assets.png
+        avif-test-image.avif
+        context.png
+        discord.svg
+        docs.png
+        figma-plugin.png
+        github.svg
+        share.png
+        styling.png
+        testing.png
+        theming.png
+        tutorials.svg
+        youtube.svg
+        
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\styles
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\STYLES
+    animations.css
+    app.css
+    global.css
+    globals.css
+    theme.css
+    tokens.css
+    utilities.css
+    
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\theme
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\THEME
+ª   index.ts
+ª   
++---hooks
+ª       useTheme.ts
+ª       
++---providers
+ª       ThemeProvider.tsx
+ª       
++---tokens
+ª       colors.ts
+ª       radius.ts
+ª       shadows.ts
+ª       spacing.ts
+ª       typography.ts
+ª       
++---types
+        theme.ts
+        
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\types
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\TYPES
+No subfolders exist 
+
+
+=================================
+C:\Users\FAROUQ\OneDrive\GitHub\JUTH-Enterprise-Management-System\apps\staff-portal\src\utils
+Folder PATH listing
+Volume serial number is 4411-19D7
+C:\USERS\FAROUQ\ONEDRIVE\GITHUB\JUTH-ENTERPRISE-MANAGEMENT-SYSTEM\APPS\STAFF-PORTAL\SRC\UTILS
+No subfolders exist 
+
+
