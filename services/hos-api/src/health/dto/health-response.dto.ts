@@ -5,8 +5,20 @@ export class HealthResponseDto {
   @ApiProperty({ example: 'ok' })
   status!: 'ok';
 
-  @ApiProperty({ example: 'not_configured' })
-  database!: 'not_configured' | 'ready';
+  @ApiProperty({
+    example: {
+      status: 'not_configured',
+      driver: 'prisma-postgresql',
+      latencyMs: 0,
+      migrationStatus: 'not_configured',
+    },
+  })
+  database!: {
+    status: 'not_configured' | 'connected' | 'disconnected' | 'unhealthy';
+    driver: string;
+    latencyMs?: number;
+    migrationStatus: 'not_configured' | 'pending' | 'current' | 'unknown';
+  };
 
   @ApiProperty({ example: 12.345 })
   uptimeSeconds!: number;

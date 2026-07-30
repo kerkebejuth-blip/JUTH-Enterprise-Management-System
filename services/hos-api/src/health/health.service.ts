@@ -17,10 +17,10 @@ export class HealthService {
   ) {}
 
   /** Returns current service health with database placeholder status. */
-  getHealth(): HealthResponseDto {
+  async getHealth(): Promise<HealthResponseDto> {
     return {
       status: 'ok',
-      database: this.databaseService.healthStatus(),
+      database: await this.databaseService.healthDetails(),
       uptimeSeconds: DateUtils.uptimeSeconds(applicationStartedAt),
       timestamp: DateUtils.nowIso(),
       version: APPLICATION_CONSTANTS.version,

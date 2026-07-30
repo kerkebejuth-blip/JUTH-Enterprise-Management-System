@@ -6,12 +6,7 @@ export type ULID = string;
 
 /** JSON database value contract. */
 export type JsonValue =
-  | string
-  | number
-  | boolean
-  | null
-  | JsonValue[]
-  | { [key: string]: JsonValue };
+  string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
 
 /** DateTime database type alias. */
 export type DateTime = Date;

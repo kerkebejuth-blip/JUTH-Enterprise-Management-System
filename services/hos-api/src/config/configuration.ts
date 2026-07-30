@@ -57,7 +57,8 @@ export function buildConfiguration(
       connectionLimit: environment.DATABASE_CONNECTION_LIMIT,
       slowQueryThresholdMs: environment.DATABASE_SLOW_QUERY_THRESHOLD_MS,
       queryLoggingEnabled: environment.DATABASE_QUERY_LOGGING_ENABLED,
-      migrationsTable: environment.DATABASE_MIGRATIONS_TABLE ?? '_prisma_migrations',
+      migrationsTable:
+        environment.DATABASE_MIGRATIONS_TABLE ?? '_prisma_migrations',
     },
     security: {
       rateLimitWindowMs: environment.RATE_LIMIT_WINDOW_MS,

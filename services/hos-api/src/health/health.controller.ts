@@ -13,7 +13,7 @@ export class HealthController {
   /** Returns application health and foundational dependency status. */
   @Get()
   @ApiOkResponse({ type: HealthResponseDto })
-  getHealth(): HealthResponseDto {
+  getHealth(): Promise<HealthResponseDto> {
     return this.healthService.getHealth();
   }
 }

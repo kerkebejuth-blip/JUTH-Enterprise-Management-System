@@ -23,7 +23,11 @@ describe('HealthController (e2e)', () => {
       .expect(({ body }: { body: unknown }) => {
         expect(body).toMatchObject({
           status: 'ok',
-          database: 'not_configured',
+          database: {
+            status: 'not_configured',
+            driver: 'prisma-postgresql',
+            migrationStatus: 'not_configured',
+          },
         });
       });
   });

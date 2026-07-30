@@ -30,32 +30,34 @@ export class PrismaProvider
   }
 
   /** Connects the Prisma provider boundary. */
-  async connect(): Promise<void> {
+  connect(): Promise<void> {
     if (!this.configuration.hasConnectionUrl) {
       this.connected = false;
       this.logger.database('Database connection URL is not configured.');
-      return;
+      return Promise.resolve();
     }
 
     this.connected = true;
     this.logger.database('Prisma provider connection boundary initialized.');
+    return Promise.resolve();
   }
 
   /** Disconnects the Prisma provider boundary. */
-  async disconnect(): Promise<void> {
+  disconnect(): Promise<void> {
     this.connected = false;
+    return Promise.resolve();
   }
 
   /** Returns current provider health and migration placeholder status. */
-  async health(): Promise<DatabaseProviderHealth> {
+  health(): Promise<DatabaseProviderHealth> {
     const startedAt = Date.now();
     const configured = this.configuration.hasConnectionUrl;
 
-    return {
+    return Promise.resolve({
       status: configured && this.connected ? 'connected' : 'not_configured',
       driver: 'prisma-postgresql',
       latencyMs: Date.now() - startedAt,
       migrationStatus: configured ? 'unknown' : 'not_configured',
-    };
+    });
   }
 }
