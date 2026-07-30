@@ -1,6 +1,4 @@
 import {
-  createContext,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -9,14 +7,7 @@ import {
 
 import type { ThemeMode } from "../types/theme";
 import { lightTheme, darkTheme } from "../tokens/colors";
-
-interface ThemeContextValue {
-  mode: ThemeMode;
-  setMode: (mode: ThemeMode) => void;
-  theme: typeof lightTheme;
-}
-
-const ThemeContext = createContext<ThemeContextValue | null>(null);
+import { ThemeContext } from "./theme-context";
 
 const STORAGE_KEY = "juth-hos-theme";
 
@@ -55,14 +46,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
-}
-
-export function useThemeContext() {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useThemeContext must be used inside ThemeProvider.");
-  }
-
-  return context;
 }

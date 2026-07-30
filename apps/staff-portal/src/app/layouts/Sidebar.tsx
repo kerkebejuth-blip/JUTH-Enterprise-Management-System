@@ -11,23 +11,30 @@ import {
   FileBarChart2,
   Shield,
   Settings,
+  type LucideIcon,
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
 
-const items = [
-  ["Dashboard", "/", LayoutDashboard],
-  ["Patients", "/patients", Users],
-  ["Clinics", "/clinics", Stethoscope],
-  ["Pharmacy", "/pharmacy", Pill],
-  ["Laboratory", "/laboratory", FlaskConical],
-  ["Radiology", "/radiology", ScanLine],
-  ["Billing", "/billing", CreditCard],
-  ["Inventory", "/inventory", Boxes],
-  ["HR", "/hr", UsersRound],
-  ["Reports", "/reports", FileBarChart2],
-  ["Administration", "/administration", Shield],
-  ["Settings", "/settings", Settings],
+interface SidebarItem {
+  label: string;
+  path: string;
+  Icon: LucideIcon;
+}
+
+const items: SidebarItem[] = [
+  { label: "Dashboard", path: "/", Icon: LayoutDashboard },
+  { label: "Patients", path: "/patients", Icon: Users },
+  { label: "Clinics", path: "/clinics", Icon: Stethoscope },
+  { label: "Pharmacy", path: "/pharmacy", Icon: Pill },
+  { label: "Laboratory", path: "/laboratory", Icon: FlaskConical },
+  { label: "Radiology", path: "/radiology", Icon: ScanLine },
+  { label: "Billing", path: "/billing", Icon: CreditCard },
+  { label: "Inventory", path: "/inventory", Icon: Boxes },
+  { label: "HR", path: "/hr", Icon: UsersRound },
+  { label: "Reports", path: "/reports", Icon: FileBarChart2 },
+  { label: "Administration", path: "/administration", Icon: Shield },
+  { label: "Settings", path: "/settings", Icon: Settings },
 ];
 
 export default function Sidebar() {
@@ -36,11 +43,11 @@ export default function Sidebar() {
       <div className="p-6 text-2xl font-bold">JUTH HOS</div>
 
       <nav className="space-y-1 px-3">
-        {items.map(([label, path, Icon]) => (
+        {items.map(({ label, path, Icon }) => (
           <NavLink
-            key={String(label)}
+            key={label}
 
-            to={String(path)}
+            to={path}
 
             className={({ isActive }) =>
               `flex items-center gap-3 rounded-lg p-3 transition

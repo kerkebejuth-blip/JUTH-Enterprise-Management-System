@@ -2,14 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 import PatientWorkspacePage from "../../modules/patient-workspace/pages/PatientWorkspacePage";
-
-const Placeholder = ({ title }: { title: string }) => (
-  <div className="p-6">
-    <h1 className="text-3xl font-bold">{title}</h1>
-
-    <p className="mt-2 text-slate-500">{title} module is under development.</p>
-  </div>
-);
+import Placeholder from "./Placeholder";
 
 export const router = createBrowserRouter([
   {

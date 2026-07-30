@@ -1,0 +1,4 @@
+:root {
+  --motion-duration-fast: 120ms;
+  --motion-duration-standard: 180ms;
+}
