@@ -207,7 +207,10 @@ importers:
         version: 11.4.6(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)
       '@nestjs/terminus':
         specifier: ^11.1.1
-        version: 11.1.1(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+        version: 11.1.1(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@prisma/client@7.9.1(typescript@5.9.3))(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@prisma/client':
+        specifier: ^7.9.1
+        version: 7.9.1(typescript@5.9.3)
       bcrypt:
         specifier: ^6.0.0
         version: 6.0.0
@@ -1534,6 +1537,21 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
+  '@prisma/client-runtime-utils@7.9.1':
+    resolution: {integrity: sha512-mVIBGYdO5CFmK0HvjxrtfIyQQcPdb88pSCeVQriVQPVZyDovIWblpHfOgcS8QO187j3QF0ePArH8qPhp0AU2vg==}
+
+  '@prisma/client@7.9.1':
+    resolution: {integrity: sha512-+xgrh2EhJVF79wC0yX5G4PI1Rdcm7Qn/nekNQ+t/O153wtNggruHal+fXHSa0QE+Tp/Cw5wvxeCEhZZ59xGm8Q==}
+    engines: {node: ^20.19 || ^22.12 || >=24.0}
+    peerDependencies:
+      prisma: '*'
+      typescript: '>=5.4.0'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+      typescript:
+        optional: true
 
   '@radix-ui/primitive@1.1.5':
     resolution: {integrity: sha512-d86WIWFYNtGA0H/d8exstrTRTp7eWJYlYJbtNofxr/3ljupZYn6EFDG/Qgu/0Kc8v7yMUxySagqJsL1+PdYjWg==}
@@ -6833,7 +6851,7 @@ snapshots:
       class-transformer: 0.5.1
       class-validator: 0.15.1
 
-  '@nestjs/terminus@11.1.1(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+  '@nestjs/terminus@11.1.1(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@prisma/client@7.9.1(typescript@5.9.3))(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
       '@nestjs/common': 11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 11.1.27(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -6841,6 +6859,8 @@ snapshots:
       check-disk-space: 3.4.0
       reflect-metadata: 0.2.2
       rxjs: 7.8.2
+    optionalDependencies:
+      '@prisma/client': 7.9.1(typescript@5.9.3)
 
   '@nestjs/testing@11.1.27(@nestjs/common@11.1.27(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@nestjs/platform-express@11.1.27)':
     dependencies:
@@ -6993,6 +7013,14 @@ snapshots:
   '@pkgr/core@0.3.6': {}
 
   '@polka/url@1.0.0-next.29': {}
+
+  '@prisma/client-runtime-utils@7.9.1': {}
+
+  '@prisma/client@7.9.1(typescript@5.9.3)':
+    dependencies:
+      '@prisma/client-runtime-utils': 7.9.1
+    optionalDependencies:
+      typescript: 5.9.3
 
   '@radix-ui/primitive@1.1.5': {}
 

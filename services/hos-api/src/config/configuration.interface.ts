@@ -17,6 +17,16 @@ export interface ApplicationConfig {
   };
   database: {
     url?: string;
+    provider: 'postgresql';
+    host?: string;
+    port: number;
+    database?: string;
+    username?: string;
+    ssl: boolean;
+    connectionLimit: number;
+    slowQueryThresholdMs: number;
+    queryLoggingEnabled: boolean;
+    migrationsTable: string;
   };
   security: {
     rateLimitWindowMs: number;

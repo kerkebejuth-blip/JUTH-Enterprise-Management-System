@@ -67,6 +67,46 @@ export class EnvironmentVariables {
 
   @IsOptional()
   @IsString()
+  DATABASE_HOST?: string;
+
+  @Transform(({ value }) => toNumber(value, 5432))
+  @IsInt()
+  @Min(1)
+  @Max(65535)
+  DATABASE_PORT = 5432;
+
+  @IsOptional()
+  @IsString()
+  DATABASE_NAME?: string;
+
+  @IsOptional()
+  @IsString()
+  DATABASE_USER?: string;
+
+  @Transform(({ value }) => toBoolean(value, false))
+  @IsBoolean()
+  DATABASE_SSL = false;
+
+  @Transform(({ value }) => toNumber(value, 10))
+  @IsInt()
+  @Min(1)
+  DATABASE_CONNECTION_LIMIT = 10;
+
+  @Transform(({ value }) => toNumber(value, 500))
+  @IsInt()
+  @Min(1)
+  DATABASE_SLOW_QUERY_THRESHOLD_MS = 500;
+
+  @Transform(({ value }) => toBoolean(value, false))
+  @IsBoolean()
+  DATABASE_QUERY_LOGGING_ENABLED = false;
+
+  @IsOptional()
+  @IsString()
+  DATABASE_MIGRATIONS_TABLE?: string;
+
+  @IsOptional()
+  @IsString()
   CORS_ORIGINS?: string;
 
   @IsOptional()
