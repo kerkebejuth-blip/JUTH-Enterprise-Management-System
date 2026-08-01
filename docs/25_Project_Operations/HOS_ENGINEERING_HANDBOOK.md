@@ -8,8 +8,8 @@ This handbook is the single source of engineering truth for HOS. It must be read
 
 ## Status
 
-- Status: Draft
-- Version: 0.1.0
+- Status: Version 1.0 Enterprise Governance Baseline
+- Version: 1.0.0
 - Owner: Chief Software Architect
 - Audience: Architects, developers, DevOps engineers, QA, operations, product managers, security reviewers, and AI-assisted contributors
 
@@ -103,6 +103,21 @@ The standard engineering workflow is:
 - No large hidden implementation should be merged without traceable planning.
 - Any change that crosses module or service boundaries must be communicated explicitly.
 
+### Repository quality gates
+
+The standard root workspace commands are:
+
+1. `pnpm install`
+2. `pnpm dev`
+3. `pnpm lint`
+4. `pnpm typecheck`
+5. `pnpm build`
+6. `pnpm test`
+7. `pnpm clean`
+8. `pnpm format`
+
+The standard validation gates are `pnpm install`, `pnpm lint`, `pnpm typecheck`, `pnpm build`, and `pnpm test`. CI and local development must use the same validation commands. Workspace packages that contain TypeScript source must expose an appropriate `typecheck` script, and packages with no test suite may report that no tests are configured without failing the repository test pipeline.
+
 ### Related project documents
 
 - [Project Roadmap](../00_Project_Management/ROADMAP.md)
@@ -126,6 +141,10 @@ The architecture must remain modular, secure, extensible, and interoperable.
 ### Architecture decision rule
 
 Any substantive architectural decision that changes platform structure, dependency direction, module boundaries, persistence strategy, or integration pattern must be documented and reviewed.
+
+### Governance freeze rule
+
+The Constitution Version 1.0, ADR baseline, Domain Blueprint framework, Architecture Compliance Matrix, and architecture knowledge base form the frozen enterprise governance baseline. Future architectural changes require ADR approval before implementation.
 
 ### Related project documents
 
@@ -235,6 +254,27 @@ A simple and scalable branch model must be used.
 
 ---
 
+## 8A. Commit Conventions
+
+Commits must be small, traceable, and aligned with the sprint scope.
+
+### Commit message expectations
+
+- Use clear imperative language.
+- Identify the affected area when practical.
+- Avoid bundling unrelated changes.
+- Reference sprint, issue, or governance context where applicable.
+
+### Examples
+
+- `docs: complete enterprise architecture baseline`
+- `chore: add repository quality gate workflow`
+- `test: add platform configuration validation coverage`
+
+Commits must not hide architecture changes. Architecture changes require ADR review before implementation.
+
+---
+
 ## 9. Pull Request Guidelines
 
 Pull requests are the primary mechanism for controlled change delivery.
@@ -282,6 +322,32 @@ Code review is a quality, safety, and knowledge-sharing mechanism.
 
 ---
 
+## 10A. Architecture Review Process
+
+Architecture review is required when a change affects:
+
+- module boundaries
+- dependency direction
+- domain model structure
+- API contracts
+- persistence strategy
+- security model
+- integration pattern
+- deployment topology
+- AI behavior
+- clinical workflow
+
+### Review steps
+
+1. Identify the architecture impact.
+2. Check the Constitution and approved ADRs.
+3. Determine whether a Domain Blueprint is required.
+4. Prepare an ADR if the decision changes architecture.
+5. Obtain review from the Chief Software Architect and relevant reviewers.
+6. Update documentation before merge.
+
+---
+
 ## 11. Release Management
 
 Releases must be planned, validated, documented, and monitored.
@@ -303,6 +369,24 @@ Releases must be planned, validated, documented, and monitored.
 ### Related project documents
 
 - [Project Roadmap](../00_Project_Management/ROADMAP.md)
+
+---
+
+## 11A. Emergency Hotfix Procedure
+
+Emergency hotfixes are allowed only for urgent security, operational, data integrity, or clinical safety issues.
+
+### Hotfix steps
+
+1. Declare the emergency and owner.
+2. Identify scope and risk.
+3. Apply the smallest safe change.
+4. Run applicable validation gates.
+5. Obtain expedited review.
+6. Document the incident, change, validation, and follow-up work.
+7. Create or update ADRs if architectural implications remain.
+
+Emergency hotfixes do not permanently bypass governance. Any deferred governance must be completed after stabilization.
 
 ---
 
