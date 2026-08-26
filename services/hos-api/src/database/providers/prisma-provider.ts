@@ -1,7 +1,10 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '@prisma/client';
 
 import { EnterpriseLoggerService } from '../../logging';
 import { DatabaseConfiguration } from '../config';
+import { InfrastructureException } from '../../filters/exceptions';
 import type {
   DatabaseProvider,
   DatabaseProviderHealth,
@@ -13,6 +16,7 @@ export class PrismaProvider
   implements DatabaseProvider, OnModuleInit, OnModuleDestroy
 {
   private connected = false;
+  private client: PrismaClient | undefined;
 
   constructor(
     private readonly configuration: DatabaseConfiguration,
@@ -37,15 +41,22 @@ export class PrismaProvider
       return Promise.resolve();
     }
 
-    this.connected = true;
-    this.logger.database('Prisma provider connection boundary initialized.');
-    return Promise.resolve();
+    return this.getClient()
+      .$connect()
+      .then(() => {
+        this.connected = true;
+        this.logger.database('Prisma provider connected to PostgreSQL.');
+      });
   }
 
   /** Disconnects the Prisma provider boundary. */
-  disconnect(): Promise<void> {
+  async disconnect(): Promise<void> {
+    if (this.client) {
+      await this.client.$disconnect();
+      this.client = undefined;
+    }
+
     this.connected = false;
-    return Promise.resolve();
   }
 
   /** Returns current provider health and migration placeholder status. */
@@ -59,5 +70,21 @@ export class PrismaProvider
       latencyMs: Date.now() - startedAt,
       migrationStatus: configured ? 'unknown' : 'not_configured',
     });
+  }
+
+  /** Returns the lazily-created Prisma client for infrastructure adapters. */
+  getClient(): PrismaClient {
+    if (!this.configuration.hasConnectionUrl) {
+      throw new InfrastructureException(
+        'Database connection URL is not configured.',
+      );
+    }
+
+    if (!this.client) {
+      const adapter = new PrismaPg(this.configuration.settings.url as string);
+      this.client = new PrismaClient({ adapter });
+    }
+
+    return this.client;
   }
 }

@@ -1,5 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 
+import { EnterpriseConfigModule } from '../config';
 import { DatabaseConfiguration } from './config';
 import { DatabaseHealthIndicator } from './health';
 import { DatabaseObservabilityService } from './observability';
@@ -9,6 +10,7 @@ import { DatabaseService } from './database.service';
 /** Global database module for enterprise persistence infrastructure. */
 @Global()
 @Module({
+  imports: [EnterpriseConfigModule],
   providers: [
     DatabaseConfiguration,
     DatabaseHealthIndicator,

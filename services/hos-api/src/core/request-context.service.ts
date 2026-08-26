@@ -28,4 +28,29 @@ export class RequestContextService {
     const context = this.getContext();
     return context?.correlationId ?? context?.requestId ?? 'system';
   }
+
+  /** Returns the authenticated user placeholder when one is present. */
+  getUserId(): string | undefined {
+    return this.getContext()?.userId;
+  }
+
+  /** Returns the active department placeholder when one is present. */
+  getDepartment(): string | undefined {
+    return this.getContext()?.department;
+  }
+
+  /** Returns the active facility placeholder when one is present. */
+  getFacility(): string | undefined {
+    return this.getContext()?.facility;
+  }
+
+  /** Returns the active tenant placeholder when one is present. */
+  getTenant(): string | undefined {
+    return this.getContext()?.tenant;
+  }
+
+  /** Returns the active session placeholder when one is present. */
+  getSessionId(): string | undefined {
+    return this.getContext()?.sessionId;
+  }
 }

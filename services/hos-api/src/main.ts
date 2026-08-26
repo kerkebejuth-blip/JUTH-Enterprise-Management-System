@@ -1,18 +1,12 @@
-import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import compression from 'compression';
 import helmet from 'helmet';
 
 import { AppModule } from './app.module';
+import { configureEnterpriseApplication } from './bootstrap';
 import { EnterpriseConfigService } from './config';
 import { APPLICATION_CONSTANTS } from './constants/application.constants';
-import { RequestContextService } from './core';
-import { GlobalExceptionFilter } from './filters';
-import {
-  ExecutionTimingInterceptor,
-  ResponseWrapperInterceptor,
-} from './interceptors';
 import { EnterpriseLoggerService } from './logging';
 
 async function bootstrap(): Promise<void> {
@@ -21,7 +15,7 @@ async function bootstrap(): Promise<void> {
   const logger = app.get(EnterpriseLoggerService);
   const config = configService.all;
 
-  app.useLogger(logger);
+  configureEnterpriseApplication(app);
   app.enableShutdownHooks();
   if (config.security.helmetEnabled) {
     app.use(helmet());
@@ -31,31 +25,12 @@ async function bootstrap(): Promise<void> {
     origin: config.cors.origins.length > 0 ? config.cors.origins : true,
     credentials: config.cors.credentials,
   });
-  app.enableVersioning({
-    type: VersioningType.URI,
-    defaultVersion: APPLICATION_CONSTANTS.apiVersion,
-  });
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      transform: true,
-      forbidNonWhitelisted: true,
-    }),
-  );
-  const requestContextService = app.get(RequestContextService);
-  app.useGlobalFilters(
-    new GlobalExceptionFilter(logger, requestContextService),
-  );
-  app.useGlobalInterceptors(
-    new ExecutionTimingInterceptor(logger),
-    new ResponseWrapperInterceptor(requestContextService),
-  );
-
   if (configService.swaggerEnabled) {
     const swaggerConfig = new DocumentBuilder()
       .setTitle(APPLICATION_CONSTANTS.shortName)
       .setDescription(APPLICATION_CONSTANTS.description)
       .setVersion(APPLICATION_CONSTANTS.version)
+      .addServer('/api/v1', 'Enterprise API v1')
       .addBearerAuth()
       .addApiKey(
         {

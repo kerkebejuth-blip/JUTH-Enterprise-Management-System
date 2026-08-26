@@ -16,6 +16,7 @@ export const HEADER_NAMES = {
   correlationId: 'x-correlation-id',
   userId: 'x-user-id',
   department: 'x-department',
+  facility: 'x-facility-id',
   tenant: 'x-tenant-id',
   sessionId: 'x-session-id',
   responseTime: 'x-response-time-ms',
@@ -40,6 +41,7 @@ export const PERMISSION_KEYS = {
 export const OPENAPI_TAGS = {
   health: 'Health Monitoring',
   platform: 'Platform',
+  patient: 'Patient Identity',
   security: 'Security',
   audit: 'Audit',
 } as const;

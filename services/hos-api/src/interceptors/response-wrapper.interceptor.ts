@@ -31,6 +31,9 @@ export class ResponseWrapperInterceptor<TData> implements NestInterceptor<
     const requestId =
       this.contextService?.getRequestId() ??
       RequestUtils.resolveRequestId(request);
+    const correlationId =
+      this.contextService?.getCorrelationId() ??
+      RequestUtils.resolveCorrelationId(request, requestId);
 
     return next.handle().pipe(
       map((data) => ({
@@ -38,13 +41,11 @@ export class ResponseWrapperInterceptor<TData> implements NestInterceptor<
         message: 'Request completed successfully.',
         timestamp: DateUtils.nowIso(),
         requestId,
+        correlationId,
         version: APPLICATION_CONSTANTS.apiVersion,
         data,
         metadata: {
           durationMs: Date.now() - startedAt,
-          correlationId:
-            this.contextService?.getCorrelationId() ??
-            RequestUtils.resolveCorrelationId(request, requestId),
         },
       })),
     );

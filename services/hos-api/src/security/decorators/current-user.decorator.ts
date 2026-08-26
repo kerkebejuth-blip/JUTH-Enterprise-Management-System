@@ -13,6 +13,7 @@ export const CurrentUser = createParamDecorator(
       sessionId: request.header(HEADER_NAMES.sessionId),
       departmentId: request.header(HEADER_NAMES.department),
       tenantId: request.header(HEADER_NAMES.tenant),
+      facilityId: request.header(HEADER_NAMES.facility),
       roles: [],
       permissions: [],
       claims: [],

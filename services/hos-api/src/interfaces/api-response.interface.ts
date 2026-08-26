@@ -4,7 +4,9 @@ export interface ApiResponse<TData> {
   message: string;
   timestamp: string;
   requestId: string;
+  correlationId: string;
   version: string;
   data: TData;
-  metadata: Record<string, unknown>;
+  pagination?: Record<string, unknown>;
+  metadata?: Record<string, unknown>;
 }

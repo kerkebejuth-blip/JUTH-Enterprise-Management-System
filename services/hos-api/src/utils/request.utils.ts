@@ -26,6 +26,7 @@ export class RequestUtils {
       correlationId: this.resolveCorrelationId(request, requestId),
       userId: request.header(HEADER_NAMES.userId),
       department: request.header(HEADER_NAMES.department),
+      facility: request.header(HEADER_NAMES.facility),
       tenant: request.header(HEADER_NAMES.tenant),
       sessionId: request.header(HEADER_NAMES.sessionId),
       method: request.method,

@@ -10,7 +10,10 @@ import type { Request, Response } from 'express';
 
 import { APPLICATION_CONSTANTS } from '../constants/application.constants';
 import { RequestContextService } from '../core';
-import type { ApiError } from '../interfaces/api-error.interface';
+import type {
+  ApiError,
+  ApiValidationError,
+} from '../interfaces/api-error.interface';
 import { EnterpriseLoggerService } from '../logging';
 import { DateUtils } from '../utils/date.utils';
 import { RequestUtils } from '../utils/request.utils';
@@ -21,6 +24,7 @@ interface HttpExceptionBody {
   error?: string;
   errorCode?: string;
   statusCode?: number;
+  validationErrors?: readonly ApiValidationError[];
 }
 
 function isHttpExceptionBody(value: unknown): value is HttpExceptionBody {
@@ -54,10 +58,15 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const requestId =
       this.contextService?.getRequestId() ??
       RequestUtils.resolveRequestId(request);
+    const correlationId =
+      this.contextService?.getCorrelationId() ??
+      RequestUtils.resolveCorrelationId(request, requestId);
+    const validationErrors = this.resolveValidationErrors(details);
     const payload: ApiError = {
       success: false,
       timestamp: DateUtils.nowIso(),
       requestId,
+      correlationId,
       statusCode,
       errorCode: this.resolveCode(exception, statusCode, details),
       message,
@@ -65,6 +74,10 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       path: request.originalUrl,
       method: request.method,
       version: APPLICATION_CONSTANTS.apiVersion,
+      type: 'about:blank',
+      title: message,
+      instance: request.originalUrl,
+      ...(validationErrors === undefined ? {} : { validationErrors }),
     };
 
     this.logException(exception, request, requestId, statusCode);
@@ -110,6 +123,10 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       return details.message;
     }
 
+    if (!(exception instanceof HttpException)) {
+      return 'An unexpected error occurred.';
+    }
+
     if (exception instanceof Error) {
       return exception.message;
     }
@@ -141,5 +158,22 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     }
 
     return details;
+  }
+
+  private resolveValidationErrors(
+    details: HttpExceptionBody | undefined,
+  ): readonly ApiValidationError[] | undefined {
+    if (details?.validationErrors !== undefined) {
+      return details.validationErrors;
+    }
+
+    if (!Array.isArray(details?.message)) {
+      return undefined;
+    }
+
+    return details.message.map((message) => ({
+      field: 'request',
+      messages: [message],
+    }));
   }
 }

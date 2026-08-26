@@ -22,6 +22,11 @@ interface SidebarItem {
   Icon: LucideIcon;
 }
 
+interface SidebarProps {
+  isOpen: boolean;
+  onNavigate: () => void;
+}
+
 const items: SidebarItem[] = [
   { label: "Dashboard", path: "/", Icon: LayoutDashboard },
   { label: "Patients", path: "/patients", Icon: Users },
@@ -37,26 +42,34 @@ const items: SidebarItem[] = [
   { label: "Settings", path: "/settings", Icon: Settings },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onNavigate }: SidebarProps) {
   return (
-    <aside className="w-72 bg-slate-900 text-white">
-      <div className="p-6 text-2xl font-bold">JUTH HOS</div>
+    <aside
+      className={`fixed inset-y-0 left-0 z-30 w-72 overflow-y-auto bg-slate-950 text-white transition-transform md:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+      aria-label="Primary navigation"
+    >
+      <div className="border-b border-white/10 px-6 py-5">
+        <p className="text-lg font-bold tracking-wide">JUTH HOS</p>
+        <p className="mt-1 text-xs text-slate-400">Staff Portal</p>
+      </div>
 
       <nav className="space-y-1 px-3">
         {items.map(({ label, path, Icon }) => (
           <NavLink
             key={label}
-
             to={path}
-
             className={({ isActive }) =>
-              `flex items-center gap-3 rounded-lg p-3 transition
-
-                            ${isActive ? "bg-blue-600" : "hover:bg-slate-800"}`
+              `flex min-h-11 items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 ${
+                isActive
+                  ? "bg-blue-700 text-white"
+                  : "text-slate-300 hover:bg-white/10 hover:text-white"
+              }`
             }
+            onClick={onNavigate}
           >
-            <Icon size={20} />
-
+            <Icon size={18} aria-hidden="true" />
             {label}
           </NavLink>
         ))}

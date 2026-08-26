@@ -4,5 +4,49 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id                      String              @id @db.Uuid
+  enterprisePatientNumber String              @unique @map("enterprise_patient_number") @db.VarChar(64)
+  hospitalNumber          String              @unique @map("hospital_number") @db.VarChar(64)
+  familyName              String              @map("family_name") @db.VarChar(128)
+  givenNames               String              @map("given_names") @db.VarChar(256)
+  otherNames              String?             @map("other_names") @db.VarChar(256)
+  namePrefix              String?             @map("name_prefix") @db.VarChar(32)
+  nameSuffix              String?             @map("name_suffix") @db.VarChar(32)
+  nameUse                 String?             @map("name_use") @db.VarChar(32)
+  dateOfBirth             DateTime            @map("date_of_birth") @db.Date
+  gender                  String              @db.VarChar(32)
+  phoneNumber             String?             @map("phone_number") @db.VarChar(32)
+  emailAddress            String?             @map("email_address") @db.VarChar(320)
+  residentialAddress      Json?               @map("residential_address")
+  nextOfKin               Json?               @map("next_of_kin")
+  status                  String              @db.VarChar(32)
+  provenance              Json
+  version                 Int                 @default(1)
+  createdAt               DateTime            @default(now()) @map("created_at")
+  updatedAt               DateTime            @updatedAt @map("updated_at")
+  identifiers             PatientIdentifier[]
+
+  @@index([familyName, givenNames])
+  @@index([phoneNumber])
+  @@index([status])
+  @@map("patients")
+}
+
+model PatientIdentifier {
+  id                 String  @id @default(uuid()) @db.Uuid
+  patientId          String  @map("patient_id") @db.Uuid
+  type               String  @db.VarChar(32)
+  value              String  @db.VarChar(64)
+  assigningAuthority String  @map("assigning_authority") @db.VarChar(128)
+  status             String  @db.VarChar(32)
+  facilityId         String? @map("facility_id") @db.VarChar(64)
+  patient            Patient @relation(fields: [patientId], references: [id], onDelete: Restrict)
+
+  @@unique([type, assigningAuthority, value])
+  @@index([value])
+  @@index([patientId])
+  @@map("patient_identifiers")
 }

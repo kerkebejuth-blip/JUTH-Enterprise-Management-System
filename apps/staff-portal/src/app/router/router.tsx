@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 import PatientWorkspacePage from "../../modules/patient-workspace/pages/PatientWorkspacePage";
+import PatientSearchPage from "../../modules/patients/pages/PatientSearchPage";
+import PlatformDashboardPage from "../../modules/platform-dashboard/pages/PlatformDashboardPage";
 import Placeholder from "./Placeholder";
 
 export const router = createBrowserRouter([
@@ -11,12 +13,17 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <PlatformDashboardPage />,
+      },
+
+      {
+        path: "workspace",
         element: <PatientWorkspacePage />,
       },
 
       {
         path: "patients",
-        element: <Placeholder title="Patients" />,
+        element: <PatientSearchPage />,
       },
 
       {

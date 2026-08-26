@@ -208,3 +208,111 @@ Pending repository review.
 ### Lessons Learned
 
 Documentation must be explicit enough for future developers and AI assistants to operate without relying on prior conversations.
+
+---
+
+## Sprint 006B - Enterprise Platform Foundation
+
+**Status:** Completed
+
+### Objectives
+
+- Implement reusable backend runtime foundations.
+- Preserve the no-business-feature constraint.
+- Establish health, response, exception, request context, and platform testing foundations.
+
+### Major Deliverables
+
+- Enterprise bootstrap configuration.
+- Request context propagation.
+- Standard response and error handling.
+- Health, readiness, liveness, information, and version endpoints.
+- Domain-neutral base entities, aggregate root, value objects, result pattern, pagination DTOs, and platform tests.
+
+### Architecture Impact
+
+Strengthened backend platform foundations without introducing clinical or administrative bounded contexts.
+
+### Validation
+
+`pnpm install`, `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm test`, `pnpm --filter hos-api test:e2e`, and `pnpm clean` passed.
+
+### Merge Status
+
+Pending repository review.
+
+### Lessons Learned
+
+Runtime bootstrap configuration should be reusable by both production startup and integration testing.
+
+---
+
+## Sprint 006C - Enterprise Domain Kernel
+
+**Status:** Completed
+
+### Objectives
+
+- Complete reusable DDD kernel abstractions before any bounded contexts are implemented.
+- Keep all kernel components framework-independent, domain-neutral, and persistence-independent.
+
+### Major Deliverables
+
+- Repository contracts.
+- Unit of Work and transaction contracts.
+- Domain event contracts, dispatcher, and publisher abstractions.
+- Domain service, application service, policy, mapper, clock, identifier, specification, business rule, and utility abstractions.
+- Domain kernel tests.
+
+### Architecture Impact
+
+Established the shared domain kernel that future bounded contexts will depend on through Clean Architecture and DDD rules.
+
+### Validation
+
+`pnpm install`, `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm test`, `pnpm --filter hos-api test:e2e`, and `pnpm clean` passed.
+
+### Merge Status
+
+Pending repository review.
+
+### Lessons Learned
+
+Domain abstractions must remain independent of NestJS, Prisma, transport, and hospital business terminology.
+
+---
+
+## Sprint 006D - Enterprise Infrastructure Adapter Layer
+
+**Status:** Completed
+
+### Objectives
+
+- Bind Sprint 006C domain kernel abstractions to reusable infrastructure adapters.
+- Add Prisma-ready repository bases, transaction orchestration, repository factory, event publisher adapter, and provider bindings.
+- Avoid business features, schema changes, endpoints, DTOs, controllers, and frontend implementation.
+
+### Major Deliverables
+
+- Infrastructure module and dependency injection tokens.
+- Prisma repository base classes and repository factory.
+- Prisma-ready transaction manager and Unit of Work adapter.
+- Logging-backed domain event publisher and dispatcher registration.
+- Clock and UUID provider bindings.
+- Infrastructure-only tests.
+
+### Architecture Impact
+
+Completed the first infrastructure adapter layer while preserving dependency inversion and keeping the domain kernel framework-independent.
+
+### Validation
+
+`pnpm install`, `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm test`, `pnpm --filter hos-api test:e2e`, and `pnpm clean` passed.
+
+### Merge Status
+
+Pending repository review.
+
+### Lessons Learned
+
+Infrastructure adapters should depend on stable kernel contracts and remain schema-neutral until approved bounded contexts introduce persistence models.

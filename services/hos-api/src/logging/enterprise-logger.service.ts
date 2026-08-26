@@ -1,4 +1,4 @@
-import { Injectable, Logger, type LoggerService } from '@nestjs/common';
+import { ConsoleLogger, Injectable, type LoggerService } from '@nestjs/common';
 
 /** Enterprise log severity levels supported by the logging platform. */
 export type EnterpriseLogLevel =
@@ -10,7 +10,7 @@ export type LogMetadata = Record<string, unknown>;
 /** Enterprise logging service backed by Nest's logger abstraction. */
 @Injectable()
 export class EnterpriseLoggerService implements LoggerService {
-  private readonly logger = new Logger('JuthHos');
+  private readonly logger = new ConsoleLogger('JuthHos');
 
   /** Logs general operational information. */
   log(message: string, context?: string): void {
