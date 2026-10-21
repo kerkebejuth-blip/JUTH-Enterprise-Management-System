@@ -5,6 +5,7 @@ import PatientWorkspacePage from "../../modules/patient-workspace/pages/PatientW
 import PatientSearchPage from "../../modules/patients/pages/PatientSearchPage";
 import PlatformDashboardPage from "../../modules/platform-dashboard/pages/PlatformDashboardPage";
 import Placeholder from "./Placeholder";
+import ClinicDirectoryPilotPage from "../../modules/clinics/pages/ClinicDirectoryPilotPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
 
       {
         path: "clinics",
-        element: <Placeholder title="Clinics" />,
+        element: <ClinicDirectoryPilotPage />,
       },
 
       {
