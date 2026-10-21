@@ -5,6 +5,7 @@ import PatientWorkspacePage from "../../modules/patient-workspace/pages/PatientW
 import PatientSearchPage from "../../modules/patients/pages/PatientSearchPage";
 import PlatformDashboardPage from "../../modules/platform-dashboard/pages/PlatformDashboardPage";
 import Placeholder from "./Placeholder";
+import LovableIntegrationPreviewPage from "../../modules/lovable-integration/pages/LovableIntegrationPreviewPage";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,11 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <PlatformDashboardPage />,
+      },
+
+      {
+        path: "integration-preview",
+        element: <LovableIntegrationPreviewPage />,
       },
 
       {
